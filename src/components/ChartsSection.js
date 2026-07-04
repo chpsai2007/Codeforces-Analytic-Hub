@@ -7,7 +7,6 @@ function ChartsSection({ difficultyData, topicData }) {
   const barInstanceRef = useRef(null);
   const pieInstanceRef = useRef(null);
 
-  // Bar Chart (Difficulty Map)
   useEffect(() => {
     if (!barChartRef.current) return;
 
@@ -16,29 +15,48 @@ function ChartsSection({ difficultyData, topicData }) {
     }
 
     const ctx = barChartRef.current.getContext('2d');
+
     barInstanceRef.current = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: difficultyData.labels,
-        datasets: [{
-          data: difficultyData.values,
-          backgroundColor: '#3b82f6',
-          borderRadius: 2
-        }]
+        datasets: [
+          {
+            data: difficultyData.values,
+            backgroundColor: '#2563eb',
+            borderRadius: 5
+          }
+        ]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
         scales: {
           x: {
-            grid: { display: false },
-            ticks: { color: '#64748b', font: { size: 11, family: 'monospace' } }
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: '#94a3b8',
+              font: {
+                size: 11
+              }
+            }
           },
           y: {
             beginAtZero: true,
-            grid: { color: 'rgba(51, 65, 85, 0.3)' },
-            ticks: { color: '#64748b', precision: 0 }
+            grid: {
+              color: '#334155'
+            },
+            ticks: {
+              color: '#94a3b8',
+              precision: 0
+            }
           }
         }
       }
@@ -52,7 +70,6 @@ function ChartsSection({ difficultyData, topicData }) {
     };
   }, [difficultyData]);
 
-  // Pie Chart (Topics Distribution)
   useEffect(() => {
     if (!pieChartRef.current) return;
 
@@ -61,33 +78,46 @@ function ChartsSection({ difficultyData, topicData }) {
     }
 
     const ctx = pieChartRef.current.getContext('2d');
-    const professionalPalette = [
-      '#3b82f6', '#10b981', '#6366f1', '#f59e0b', '#ec4899', '#8b5cf6', '#14b8a6', '#64748b',
-      '#a855f7', '#06b6d4', '#f43f5e', '#10b981', '#84cc16', '#eab308', '#38bdf8', '#fb7185'
+
+    const colors = [
+      '#2563eb',
+      '#16a34a',
+      '#f59e0b',
+      '#ef4444',
+      '#8b5cf6',
+      '#06b6d4',
+      '#ec4899',
+      '#84cc16',
+      '#f97316',
+      '#14b8a6'
     ];
 
     pieInstanceRef.current = new Chart(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
         labels: topicData.labels,
-        datasets: [{
-          data: topicData.values,
-          backgroundColor: professionalPalette,
-          borderWidth: 1.5,
-          borderColor: '#1e293b'
-        }]
+        datasets: [
+          {
+            data: topicData.values,
+            backgroundColor: colors,
+            borderColor: '#1e293b',
+            borderWidth: 2
+          }
+        ]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        cutout: '45%',
         plugins: {
           legend: {
-            position: 'right',
-            display: topicData.labels.length <= 15,
+            position: 'bottom',
             labels: {
-              color: '#94a3b8',
-              font: { size: 10 },
-              boxWidth: 10
+              color: '#cbd5e1',
+              font: {
+                size: 11
+              },
+              boxWidth: 14
             }
           }
         }
@@ -104,18 +134,27 @@ function ChartsSection({ difficultyData, topicData }) {
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="bg-[#1e293b] p-5 rounded border border-slate-800">
-        <h3 className="text-sm font-semibold text-slate-200 mb-4">Solved Problem Difficulty Map</h3>
-        <div className="h-64 relative">
+
+      <div className="bg-slate-800 p-6 rounded-lg border border-slate-700 shadow-md">
+        <h3 className="text-lg font-bold text-slate-100 mb-4">
+          Solved Problem Difficulty
+        </h3>
+
+        <div className="h-72">
           <canvas ref={barChartRef}></canvas>
         </div>
       </div>
-      <div className="bg-[#1e293b] p-5 rounded border border-slate-800">
-        <h3 className="text-sm font-semibold text-slate-200 mb-4">Topic Wise Solved Distribution (Complete Map)</h3>
-        <div className="h-64 relative flex justify-center">
+
+      <div className="bg-slate-800 p-6 rounded-lg border border-slate-700 shadow-md">
+        <h3 className="text-lg font-bold text-slate-100 mb-4">
+          Topic Wise Distribution
+        </h3>
+
+        <div className="h-72 flex justify-center items-center">
           <canvas ref={pieChartRef}></canvas>
         </div>
       </div>
+
     </section>
   );
 }

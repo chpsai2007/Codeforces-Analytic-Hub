@@ -6,6 +6,7 @@ function SearchBox({ onSearch, loading }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const trimmed = handle.trim();
+
     if (trimmed) {
       onSearch(trimmed);
     }
@@ -14,27 +15,36 @@ function SearchBox({ onSearch, loading }) {
   return (
     <section className="max-w-xl mb-10">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="handleInput" className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">
-          Search User Handle
+        
+        <label
+          htmlFor="handleInput"
+          className="block text-sm font-semibold text-slate-200 mb-2"
+        >
+          Search Codeforces Handle
         </label>
-        <div className="flex gap-2">
+
+        <div className="flex gap-3">
+
           <input
             type="text"
             id="handleInput"
             value={handle}
             onChange={(e) => setHandle(e.target.value)}
-            placeholder="e.g. jiangly, quizx"
-            className="w-full bg-[#1e293b] text-sm text-slate-100 placeholder-slate-500 rounded border border-slate-700/60 px-4 py-2.5 focus:outline-none focus:border-blue-500 transition-colors"
+            placeholder="e.g. tourist, Benq, jiangly"
+            className="w-full bg-slate-800 text-slate-100 placeholder-slate-400 border border-slate-600 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500"
             disabled={loading}
           />
+
           <button
             type="submit"
             disabled={loading}
-            className="bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 disabled:text-slate-400 text-white text-sm font-medium px-5 py-2.5 rounded transition-colors cursor-pointer whitespace-nowrap"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-lg transition-colors disabled:bg-slate-600"
           >
-            {loading ? 'Analyzing...' : 'View Analytics'}
+            {loading ? 'Loading...' : 'Search'}
           </button>
+
         </div>
+
       </form>
     </section>
   );
