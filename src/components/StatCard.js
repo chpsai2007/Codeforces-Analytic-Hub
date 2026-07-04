@@ -2,10 +2,10 @@ import React from 'react';
 
 function StatCard({ title, value, subtext, valueClass = '' }) {
   return (
-    <div className="bg-[#1e293b] p-5 rounded border border-slate-800">
-      <span className="block text-xs font-medium text-slate-400 uppercase tracking-wider">{title}</span>
-      <span className={`block text-2xl font-bold mt-1 ${valueClass}`}>{value}</span>
-      <span className="block text-xs uppercase tracking-wider mt-0.5 text-slate-500">{subtext}</span>
+    <div className="bg-slate-800 p-6 rounded-lg border border-slate-700 shadow-md">
+      <span className="block text-sm font-semibold text-slate-300 uppercase">{title}</span>
+      <span className={`block text-3xl font-bold mt-1 ${valueClass}`}>{value}</span>
+      <span className="block text-sm text-slate-400 mt-1">{subtext}</span>
     </div>
   );
 }
