@@ -23,7 +23,7 @@ function SearchBox({ onSearch, loading }) {
             id="handleInput"
             value={handle}
             onChange={(e) => setHandle(e.target.value)}
-            placeholder="e.g. tourist, Benq"
+            placeholder="e.g. jiangly, quizx"
             className="w-full bg-[#1e293b] text-sm text-slate-100 placeholder-slate-500 rounded border border-slate-700/60 px-4 py-2.5 focus:outline-none focus:border-blue-500 transition-colors"
             disabled={loading}
           />
