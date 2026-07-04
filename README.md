@@ -36,7 +36,7 @@ The project is designed with a clean and modular architecture using reusable Rea
 
 ### 👤 User Analytics
 
-* Search any Codeforces handle
+* Search and analyze any Codeforces handle
 * Current Rating
 * Current Rank
 * Maximum Rating
@@ -88,7 +88,7 @@ Perfect for revision.
 
 ### 📅 Upcoming Contests
 
-Displays upcoming Codeforces contests fetched directly from the official API.
+Displays upcoming Codeforces contests fetched from the official Codeforces API.
 
 Includes
 
@@ -161,7 +161,7 @@ src/
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/codeforces-analytics.git
+ git clone https://github.com/chpsai2007/Codeforces_Extension.git
 ```
 
 Move into the project
@@ -179,7 +179,7 @@ npm install
 Run locally
 
 ```bash
-npm run dev
+npm start
 ```
 
 ---
@@ -232,7 +232,7 @@ https://codeforces.com/api/contest.list
 
 # 🚀 Future Improvements
 
-* Authentication
+* User Authentication
 * Daily Problem Recommendations
 * Virtual Contest Tracker
 * Rating Prediction
@@ -264,7 +264,7 @@ This project is licensed under the MIT License.
 
 # 👨‍💻 Author
 
-**CHEEMAKURTHI PURANDHAR SAI**
+**Cheemakurthi Purandhar Sai**
 
 IIT Ropar
 
